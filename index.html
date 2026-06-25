@@ -182,44 +182,55 @@
     <!-- ======================================================= -->
     <div class="fixed bottom-6 right-6 z-40 flex flex-col items-end">
         <!-- Chat Container Box -->
-        <div id="customer-chat-window" class="w-80 sm:w-96 h-[460px] bg-white rounded-2xl shadow-2xl border border-gray-200 flex flex-col overflow-hidden mb-4 hidden">
-            <div class="bg-red-600 text-white p-4 flex justify-between items-center shadow-sm shrink-0">
+        <div id="customer-chat-window" class="w-85 sm:w-96 h-[500px] bg-white rounded-2xl shadow-2xl border border-gray-100 flex flex-col overflow-hidden mb-4 hidden">
+            <!-- Premium Active Header Strip -->
+            <div class="bg-gradient-to-r from-red-600 to-red-700 text-white p-4 flex justify-between items-center shadow-md shrink-0">
                 <div class="flex items-center space-x-3">
-                    <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center text-sm"><i class="fa-solid fa-user"></i></div>
+                    <div class="relative">
+                        <div class="w-9 h-9 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center text-sm border border-white/20">
+                            <i class="fa-solid fa-drumstick-bite text-white"></i>
+                        </div>
+                        <span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-400 border-2 border-red-600 rounded-full animate-pulse"></span>
+                    </div>
                     <div>
-                        <h4 class="font-bold text-sm tracking-wide">Karki Meat Shop Chat</h4>
+                        <h4 class="font-bold text-sm tracking-wide">Karki Meat Shop</h4>
+                        <div class="flex items-center gap-1">
+                            <span class="text-[10px] text-red-100 font-medium">● Live Support Agent</span>
+                        </div>
                     </div>
                 </div>
-                <button onclick="toggleChatWidget()" class="text-white hover:text-red-200 text-lg cursor-pointer">&times;</button>
+                <button onclick="toggleChatWidget()" class="text-white/80 hover:text-white text-xl p-1 font-bold transition cursor-pointer">&times;</button>
             </div>
             
             <!-- VIEW A: Mandatory Details Screen (Blocks Chat Room) -->
             <div id="customer-auth-screen" class="p-6 flex flex-col justify-center items-center flex-1 space-y-4 bg-gray-50">
                 <div class="text-center mb-2">
-                    <i class="fa-solid fa-user-shield text-red-600 text-4xl mb-2"></i>
-                    <h5 class="font-bold text-gray-800">Identify Yourself</h5>
-                    <p class="text-xs text-gray-500">Please provide your contact information to begin ordering.</p>
+                    <div class="w-14 h-14 bg-red-50 text-red-600 rounded-full flex items-center justify-center mx-auto mb-3 shadow-inner">
+                        <i class="fa-solid fa-user-shield text-2xl"></i>
+                    </div>
+                    <h5 class="font-bold text-gray-800 text-base">Let's Get Started</h5>
+                    <p class="text-xs text-gray-500 mt-1 px-4">Please provide your contact information to unlock the order desk.</p>
                 </div>
                 <div class="w-full space-y-3">
                     <div>
-                        <label class="block text-[11px] font-bold text-gray-600 uppercase mb-1">Full Name</label>
-                        <input type="text" id="cust-reg-name" placeholder="e.g., Suresh Karki" class="w-full border p-2.5 rounded-lg text-sm bg-white outline-none focus:border-red-500">
+                        <label class="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1">Full Name</label>
+                        <input type="text" id="cust-reg-name" placeholder="e.g., Ram Bahadur" class="w-full border border-gray-200 p-3 rounded-xl text-sm bg-white outline-none focus:border-red-500 transition-all focus:shadow-md">
                     </div>
                     <div>
-                        <label class="block text-[11px] font-bold text-gray-600 uppercase mb-1">Phone Number</label>
-                        <input type="tel" id="cust-reg-phone" placeholder="e.g., 98XXXXXXXX" class="w-full border p-2.5 rounded-lg text-sm bg-white outline-none focus:border-red-500">
+                        <label class="block text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1">Phone Number</label>
+                        <input type="tel" id="cust-reg-phone" placeholder="e.g., 98XXXXXXXX" class="w-full border border-gray-200 p-3 rounded-xl text-sm bg-white outline-none focus:border-red-500 transition-all focus:shadow-md">
                     </div>
                     <div id="cust-reg-error" class="text-red-600 text-xs font-semibold text-center hidden">⚠️ Both Name and Phone are required!</div>
-                    <button onclick="submitCustomerRegistration()" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-2.5 rounded-lg text-sm transition shadow-md cursor-pointer">Unlocks Chat Room</button>
+                    <button onclick="submitCustomerRegistration()" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 rounded-xl text-sm transition shadow-lg shadow-red-600/20 active:scale-[0.99] cursor-pointer">Start Free Chat</button>
                 </div>
             </div>
 
-            <!-- VIEW B: Real-Time Chat Room (Hidden behind verification screen) -->
-            <div id="customer-chat-screen" class="flex-1 flex flex-col min-h-0 hidden">
-                <div id="customer-chat-box" class="flex-1 p-4 overflow-y-auto space-y-3 bg-gray-50 text-sm"></div>
-                <form onsubmit="sendCustomerMessage(event)" class="p-3 bg-white border-t border-gray-100 flex gap-2 items-center shrink-0">
-                    <input type="text" id="customer-input" placeholder="Type items you want to buy..." required class="flex-1 bg-gray-100 p-2.5 rounded-xl text-xs sm:text-sm outline-none focus:bg-white border border-transparent focus:border-red-500">
-                    <button type="submit" class="bg-red-600 hover:bg-red-700 text-white w-9 h-9 rounded-xl flex items-center justify-center transition shrink-0 cursor-pointer">
+            <!-- VIEW B: Real-Time Chat Room (Premium Crystal White Layout) -->
+            <div id="customer-chat-screen" class="flex-1 flex flex-col min-h-0 hidden bg-slate-100">
+                <div id="customer-chat-box" class="flex-1 p-4 overflow-y-auto space-y-4 text-sm" style="background-image: radial-gradient(#e2e8f0 1.5px, transparent 1.5px); background-size: 16px 16px;"></div>
+                <form onsubmit="sendCustomerMessage(event)" class="p-3 bg-white border-t border-gray-200/80 flex gap-2 items-center shrink-0">
+                    <input type="text" id="customer-input" placeholder="Type meat items & quantity needed..." required class="flex-1 bg-gray-50 border border-gray-200 p-3 rounded-xl text-xs sm:text-sm outline-none focus:bg-white focus:border-red-500 transition-all font-medium">
+                    <button type="submit" class="bg-red-600 hover:bg-red-700 text-white w-10 h-10 rounded-xl flex items-center justify-center transition-all shrink-0 shadow-md shadow-red-600/20 active:scale-95 cursor-pointer">
                         <i class="fa-solid fa-paper-plane text-xs"></i>
                     </button>
                 </form>
@@ -227,7 +238,7 @@
         </div>
         
         <!-- Toggle Circular Button Icon -->
-        <button onclick="toggleChatWidget()" class="bg-red-600 hover:bg-red-700 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-xl transition-transform hover:scale-105 relative cursor-pointer">
+        <button onclick="toggleChatWidget()" class="bg-red-600 hover:bg-red-700 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-xl transition-transform hover:scale-105 relative cursor-pointer shadow-red-600/30">
             <i class="fa-solid fa-comments text-xl"></i>
         </button>
     </div>
@@ -396,9 +407,27 @@
 
             cBox.innerHTML = '';
             myHistory.forEach(msg => {
-                let html = msg.sender === 'customer' 
-                    ? `<div class="flex justify-end w-full"><div class="bg-red-600 text-white p-2.5 rounded-xl rounded-tr-none max-w-[85%] font-medium shadow-sm">${msg.text}</div></div>`
-                    : `<div class="flex items-start gap-2 max-w-[85%]"><div class="border p-2.5 rounded-xl rounded-tl-none bg-white text-gray-800 shadow-sm"><b>${msg.sender === 'admin' ? '👨‍🍳 Staff: ' : '🍗 '}</b>${msg.text}</div></div>`;
+                let html = '';
+                if (msg.sender === 'customer') {
+                    // Customer Message Card Style (True White Modern Theme)
+                    html = `
+                        <div class="flex justify-end w-full">
+                            <div class="bg-white text-gray-900 border border-gray-200/80 p-3 rounded-2xl rounded-tr-none max-w-[85%] shadow-sm font-medium tracking-wide">
+                                ${msg.text}
+                            </div>
+                        </div>`;
+                } else {
+                    // Admin / System Message Card Style
+                    let senderLabel = msg.sender === 'admin' ? '🍖 Shop Counter' : '🔔 Notice';
+                    let bgBanner = msg.sender === 'admin' ? 'from-red-50 to-orange-50 border-red-200' : 'from-gray-50 to-slate-50 border-gray-200';
+                    html = `
+                        <div class="flex justify-start w-full">
+                            <div class="bg-gradient-to-br ${bgBanner} border text-gray-800 p-3 rounded-2xl rounded-tl-none max-w-[85%] shadow-sm">
+                                <div class="text-[10px] font-bold text-red-600 uppercase tracking-wider mb-1">${senderLabel}</div>
+                                <p class="font-medium text-gray-800">${msg.text}</p>
+                            </div>
+                        </div>`;
+                }
                 cBox.innerHTML += html;
             });
             cBox.scrollTop = cBox.scrollHeight;
