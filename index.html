@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karki Meat Shop - Tilottama-1, Rupandehi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans scroll-smooth">
+
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fa-solid fa-drumstick-bite text-red-600 text-3xl"></i>
+                <span class="text-xl font-bold tracking-tight text-gray-900">KARKI MEAT SHOP</span>
+            </div>
+            <nav class="hidden md:flex space-x-6 font-medium">
+                <a href="#home" class="hover:text-red-600 transition">Home</a>
+                <a href="#products" class="hover:text-red-600 transition">Our Products</a>
+                <button onclick="openLoginModal()" class="text-xs bg-slate-700 hover:bg-slate-800 text-white px-2.5 py-1 rounded transition font-bold cursor-pointer ml-4">
+                    <i class="fa-solid fa-lock"></i> Staff Login
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="relative bg-gray-900 text-white py-20 px-4 bg-cover bg-center" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1603048588665-791ca8aea617?auto=format&fit=crop&q=80&w=1200');">
+        <div class="max-w-4xl mx-auto text-center">
+            <span class="bg-red-600 text-xs uppercase font-bold px-3 py-1 rounded-full tracking-wider">100% Fresh & Hygienic</span>
+            <h1 class="text-4xl font-extrabold mt-4 mb-4">Premium Quality Meat</h1>
+            <button onclick="toggleChatWidget()" class="bg-red-600 text-white px-8 py-3 rounded-lg font-bold text-lg hover:bg-red-700 transition cursor-pointer">Open Customer Chat Window</button>
+        </div>
+    </section>
+
+    <div id="login-modal" class="fixed inset-0 bg-slate-900/80 z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-xl max-w-sm w-full p-6 shadow-2xl relative">
+            <button onclick="closeLoginModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-xl font-bold cursor-pointer">&times;</button>
+            <div class="text-center mb-6">
+                <div class="w-12 h-12 bg-red-100 text-red-600 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <i class="fa-solid fa-lock text-xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900">Staff Portal Login</h3>
+                <p class="text-xs text-gray-500 mt-1">User: admin | Pass: karki123</p>
+            </div>
+            <form onsubmit="handleStaffLogin(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 mb-1">Username</label>
+                    <input type="text" id="login-username" required class="w-full border p-2.5 rounded-lg text-sm outline-none focus:border-red-500 bg-gray-50">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 mb-1">Password</label>
+                    <input type="password" id="login-password" required class="w-full border p-2.5 rounded-lg text-sm outline-none focus:border-red-500 bg-gray-50">
+                </div>
+                <div id="login-error" class="text-red-600 text-xs font-semibold hidden text-center">❌ Invalid username or password!</div>
+                <button type="submit" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold p-2.5 rounded-lg transition text-sm cursor-pointer">Verify & Unlock</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="admin-panel" class="fixed inset-0 bg-slate-900/80 z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-xl max-w-5xl w-full h-[600px] flex flex-col overflow-hidden shadow-2xl">
+            <div class="bg-slate-800 text-white p-4 flex justify-between items-center shrink-0">
+                <div class="flex items-center gap-2">
+                    <span class="w-2.5 h-2.5 bg-green-400 rounded-full animate-pulse"></span>
+                    <h3 class="font-bold">Shop Owner Central Control Room</h3>
+                </div>
+                <button onclick="toggleAdminPanel()" class="text-slate-400 hover:text-white font-bold text-xl cursor-pointer">&times;</button>
+            </div>
+            
+            <div class="flex flex-1 min-h-0 w-full overflow-hidden">
+                <div class="w-1/3 border-r bg-slate-100 flex flex-col">
+                    <div class="p-3 bg-slate-200 text-xs font-bold text-slate-600 tracking-wider uppercase border-b">⚠️ 1. Click Name to Reply</div>
+                    <div id="admin-customer-list" class="flex-1 overflow-y-auto divide-y divide-gray-200">
+                        </div>
+                </div>
+
+                <div class="w-2/3 flex flex-col bg-white">
+                    <div id="admin-chat-header" class="p-3 bg-gray-100 border-b text-sm font-bold text-gray-700 flex items-center gap-2">
+                        <i class="fa-solid fa-user-clock text-gray-400"></i> Select a thread to unlock replying
+                    </div>
+                    
+                    <div id="admin-chat-box" class="flex-1 p-4 overflow-y-auto space-y-3 bg-slate-50 text-sm"></div>
+
+                    <form onsubmit="sendAdminReply(event)" class="p-4 border-t flex gap-2 bg-slate-100 shrink-0">
+                        <input type="text" id="admin-input" placeholder="⬅️ Click on a customer from the left list to unlock typing..." required disabled class="flex-1 border border-gray-300 bg-gray-200 p-3 rounded-xl outline-none text-sm font-medium transition focus:border-slate-800 focus:bg-white disabled:bg-gray-200 disabled:text-gray-400 disabled:cursor-not-allowed">
+                        <button type="submit" id="admin-submit-btn" disabled class="bg-slate-800 hover:bg-slate-900 text-white px-6 rounded-xl font-bold text-sm transition tracking-wide shrink-0 disabled:bg-gray-400 disabled:cursor-not-allowed">
+                            <i class="fa-solid fa-paper-plane mr-1"></i> Reply
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed bottom-6 right-6 z-40 flex flex-col items-end">
+        <div id="customer-chat-window" class="w-80 md:w-96 h-[450px] bg-white rounded-2xl shadow-2xl border border-gray-200 flex flex-col overflow-hidden mb-4 hidden">
+            <div class="bg-red-600 text-white p-4 flex justify-between items-center shadow-sm shrink-0">
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center text-sm"><i class="fa-solid fa-drumstick-bite"></i></div>
+                    <div>
+                        <h4 class="font-bold text-sm tracking-wide">Karki Meat Shop Chat</h4>
+                    </div>
+                </div>
+                <button onclick="toggleChatWidget()" class="text-white hover:text-red-200 text-lg cursor-pointer">&times;</button>
+            </div>
+            <div id="customer-chat-box" class="flex-1 p-4 overflow-y-auto space-y-3 bg-gray-50 text-sm"></div>
+            <form onsubmit="sendCustomerMessage(event)" class="p-3 bg-white border-t border-gray-100 flex gap-2 items-center shrink-0">
+                <input type="text" id="customer-input" placeholder="Type message as customer..." required class="flex-1 bg-gray-100 p-2.5 rounded-xl text-xs md:text-sm outline-none border border-transparent focus:border-red-500 focus:bg-white transition">
+                <button type="submit" class="bg-red-600 hover:bg-red-700 text-white w-9 h-9 rounded-xl flex items-center justify-center transition shrink-0 cursor-pointer">
+                    <i class="fa-solid fa-paper-plane text-xs"></i>
+                </button>
+            </form>
+        </div>
+        <button onclick="toggleChatWidget()" class="bg-red-600 hover:bg-red-700 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-xl transition-transform hover:scale-105 relative cursor-pointer">
+            <i class="fa-solid fa-comments text-xl"></i>
+        </button>
+    </div>
+
+    <script>
+        let adminIsOnline = false;
+        let autoReplyTimer = null;
+        let selectedCustomerId = null; 
+
+        let myCustomerId = localStorage.getItem('karki_my_user_id') || 'Customer_' + Math.floor(1000 + Math.random() * 9000);
+        localStorage.setItem('karki_my_user_id', myCustomerId);
+
+        const defaultGreeting = { text: "Namaste! Welcome to Karki Meat Shop.", sender: 'system' };
+
+        function getMasterData() {
+            let data = localStorage.getItem('karki_master_chat_records');
+            let parsed = data ? JSON.parse(data) : {};
+            
+            // SECURITY FIX: If the database is completely empty, auto-create a mock active user so the admin can always type
+            if (Object.keys(parsed).length === 0) {
+                parsed["Demo_Customer_Order"] = [
+                    defaultGreeting,
+                    { text: "Hello! Is 2kg Premium Mutton ready for pickup?", sender: "customer" }
+                ];
+            }
+            return parsed;
+        }
+
+        function saveMasterData(data) {
+            localStorage.setItem('karki_master_chat_records', JSON.stringify(data));
+            renderCustomerChatView();
+            renderAdminSidebarAndChat();
+        }
+
+        function openLoginModal() { document.getElementById('login-modal').classList.remove('hidden'); }
+        function closeLoginModal() { document.getElementById('login-modal').classList.add('hidden'); }
+
+        function handleStaffLogin(e) {
+            e.preventDefault();
+            if (document.getElementById('login-username').value.trim() === 'admin' && 
+                document.getElementById('login-password').value.trim() === 'karki123') {
+                closeLoginModal();
+                toggleAdminPanel();
+            } else {
+                document.getElementById('login-error').classList.remove('hidden');
+            }
+        }
+
+        function toggleAdminPanel() {
+            const adminPanel = document.getElementById('admin-panel');
+            adminPanel.classList.toggle('hidden');
+            adminIsOnline = !adminPanel.classList.contains('hidden');
+            
+            // Auto-select the first customer row found so the input unlocks automatically
+            if (adminIsOnline) {
+                const master = getMasterData();
+                const keys = Object.keys(master);
+                if (keys.length > 0) selectedCustomerId = keys[0];
+            }
+            renderAdminSidebarAndChat();
+        }
+
+        function toggleChatWidget() {
+            document.getElementById('customer-chat-window').classList.toggle('hidden');
+            renderCustomerChatView();
+        }
+
+        function renderCustomerChatView() {
+            const cBox = document.getElementById('customer-chat-box');
+            const master = getMasterData();
+            const myHistory = master[myCustomerId] || [defaultGreeting];
+
+            cBox.innerHTML = '';
+            myHistory.forEach(msg => {
+                let html = msg.sender === 'customer' 
+                    ? `<div class="flex justify-end w-full"><div class="bg-red-600 text-white p-2.5 rounded-xl rounded-tr-none font-medium shadow-sm">${msg.text}</div></div>`
+                    : `<div class="flex items-start gap-2 max-w-[85%]"><div class="border p-2.5 rounded-xl rounded-tl-none bg-white text-gray-800 shadow-sm"><b>${msg.sender === 'admin' ? '👨‍🍳 Staff: ' : '🍗 '}</b>${msg.text}</div></div>`;
+                cBox.innerHTML += html;
+            });
+            cBox.scrollTop = cBox.scrollHeight;
+        }
+
+        function renderAdminSidebarAndChat() {
+            const sidebar = document.getElementById('admin-customer-list');
+            const aBox = document.getElementById('admin-chat-box');
+            const chatHeader = document.getElementById('admin-chat-header');
+            const inputField = document.getElementById('admin-input');
+            const submitBtn = document.getElementById('admin-submit-btn');
+            
+            const master = getMasterData();
+            sidebar.innerHTML = '';
+
+            Object.keys(master).forEach(custId => {
+                const isSelected = custId === selectedCustomerId;
+                let rowHtml = `
+                    <div onclick="selectCustomerThread('${custId}')" class="p-3 cursor-pointer transition flex justify-between items-center ${isSelected ? 'bg-red-100 border-l-4 border-red-600 font-bold' : 'hover:bg-gray-200'}">
+                        <span class="text-sm text-slate-800">${custId}</span>
+                        <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                    </div>`;
+                sidebar.innerHTML += rowHtml;
+            });
+
+            if (selectedCustomerId && master[selectedCustomerId]) {
+                chatHeader.innerHTML = `<i class="fa-solid fa-comments text-green-600"></i> Replying to: <span class="text-red-600 font-bold">${selectedCustomerId}</span>`;
+                
+                inputField.removeAttribute('disabled');
+                inputField.placeholder = "Type your response message here...";
+                inputField.classList.remove('bg-gray-200', 'text-gray-400', 'cursor-not-allowed');
+                submitBtn.removeAttribute('disabled');
+
+                aBox.innerHTML = '';
+                master[selectedCustomerId].forEach(msg => {
+                    let sideHtml = msg.sender === 'customer'
+                        ? `<div class="flex justify-start w-full"><div class="bg-gray-200 text-gray-800 p-2.5 rounded-xl rounded-tl-none font-medium"><b>${selectedCustomerId}:</b> ${msg.text}</div></div>`
+                        : `<div class="flex justify-end w-full"><div class="p-2.5 rounded-xl rounded-tr-none bg-slate-800 text-white font-medium"><b>You:</b> ${msg.text}</div></div>`;
+                    aBox.innerHTML += sideHtml;
+                });
+                aBox.scrollTop = aBox.scrollHeight;
+            }
+        }
+
+        function selectCustomerThread(custId) {
+            selectedCustomerId = custId;
+            renderAdminSidebarAndChat();
+            setTimeout(() => document.getElementById('admin-input').focus(), 50);
+        }
+
+        function sendCustomerMessage(e) {
+            e.preventDefault();
+            const input = document.getElementById('customer-input');
+            const text = input.value.trim();
+            if (!text) return;
+
+            let master = getMasterData();
+            if (!master[myCustomerId]) master[myCustomerId] = [defaultGreeting];
+            master[myCustomerId].push({ text: text, sender: 'customer' });
+            saveMasterData(master);
+            input.value = '';
+        }
+
+        function sendAdminReply(e) {
+            e.preventDefault();
+            if (!selectedCustomerId) return;
+
+            const input = document.getElementById('admin-input');
+            const text = input.value.trim();
+            if (!text) return;
+
+            let master = getMasterData();
+            if (master[selectedCustomerId]) {
+                master[selectedCustomerId].push({ text: text, sender: 'admin' });
+                saveMasterData(master);
+            }
+            input.value = '';
+            setTimeout(() => input.focus(), 50);
+        }
+
+        window.onload = function() { renderCustomerChatView(); renderAdminSidebarAndChat(); };
+        window.addEventListener('storage', function() { renderCustomerChatView(); renderAdminSidebarAndChat(); });
+    </script>
+</body>
+</html>
