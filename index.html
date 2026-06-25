@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Karki Meat Shop - Tilottama-1, Rupandehi</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans scroll-smooth">
+<body class="bg-gray-50 text-gray-800 font-sans">
 
+    <!-- Header / Navigation -->
     <header class="bg-white shadow-sm sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-2">
@@ -17,19 +18,225 @@
             </div>
             <nav class="hidden md:flex space-x-6 font-medium">
                 <a href="#home" class="hover:text-red-600 transition">Home</a>
-                <button onclick="openLoginModal()" class="text-xs bg-slate-700 hover:bg-slate-800 text-white px-2.5 py-1 rounded transition font-bold cursor-pointer ml-4">
-                    <i class="fa-solid fa-lock"></i> Staff Login
-                </button>
+                <a href="#products" class="hover:text-red-600 transition">Our Products</a>
+                <a href="#about" class="hover:text-red-600 transition">About Us</a>
+                <a href="#contact" class="hover:text-red-600 transition">Contact</a>
             </nav>
+            <a href="tel:+9779800000000" class="bg-red-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-red-700 transition flex items-center gap-2">
+                <i class="fa-solid fa-phone"></i> Call Now
+            </a>
         </div>
     </header>
 
-    <section id="home" class="relative bg-gray-900 text-white py-20 px-4 text-center bg-cover bg-center" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1603048588665-791ca8aea617?auto=format&fit=crop&q=80&w=1200');">
-        <span class="bg-red-600 text-xs uppercase font-bold px-3 py-1 rounded-full tracking-wider">100% Fresh & Hygienic</span>
-        <h1 class="text-4xl font-extrabold mt-4 mb-4">Premium Quality Meat</h1>
-        <button onclick="toggleChatWidget()" class="bg-red-600 text-white px-8 py-3 rounded-lg font-bold text-lg hover:bg-red-700 transition cursor-pointer">Open Customer Chat</button>
+    <!-- Hero Section -->
+    <section id="home" class="relative bg-gray-900 text-white py-24 px-4 bg-cover bg-center" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1603048588665-791ca8aea617?auto=format&fit=crop&q=80&w=1200');">
+        <div class="max-w-4xl mx-auto text-center">
+            <span class="bg-red-600 text-xs uppercase font-bold px-3 py-1 rounded-full tracking-wider">100% Fresh & Hygienic</span>
+            <h1 class="text-4xl md:text-6xl font-extrabold mt-4 mb-6">Premium Quality Meat in Tilottama</h1>
+            <p class="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto">Serving the finest, freshest, and strictly hygienic cut meats right to your kitchen. Quality you can trust, taste you will love.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#products" class="bg-red-600 text-white px-8 py-3 rounded-lg font-bold text-lg hover:bg-red-700 transition">View Products</a>
+                <button onclick="toggleChatWidget()" class="bg-transparent border-2 border-white text-white px-8 py-3 rounded-lg font-bold text-lg hover:bg-white hover:text-gray-900 transition cursor-pointer">Chat / Order Online</button>
+            </div>
+        </div>
     </section>
 
+    <!-- Features Section -->
+    <section class="py-12 bg-white shadow-inner">
+        <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div class="p-4">
+                <i class="fa-solid fa-shield-halved text-red-600 text-4xl mb-3"></i>
+                <h3 class="text-xl font-bold mb-2">Highly Hygienic</h3>
+                <p class="text-gray-600">Our facility strictly follows clean-cut processes and regular sanitization protocols.</p>
+            </div>
+            <div class="p-4">
+                <i class="fa-solid fa-leaf text-red-600 text-4xl mb-3"></i>
+                <h3 class="text-xl font-bold mb-2">100% Fresh Daily</h3>
+                <p class="text-gray-600">We source locally and ensure meats are freshly prepared every single morning.</p>
+            </div>
+            <div class="p-4">
+                <i class="fa-solid fa-truck text-red-600 text-4xl mb-3"></i>
+                <h3 class="text-xl font-bold mb-2">Local Delivery</h3>
+                <p class="text-gray-600">Get fresh items delivered straight to your home around Tilottama-1 area.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="py-20 px-4 max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Meat Selection</h2>
+            <div class="w-16 h-1 bg-red-600 mx-auto"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Product 1 -->
+            <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition">
+                <img src="https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?auto=format&fit=crop&q=80&w=600" alt="Fresh Chicken" class="h-56 w-full object-cover">
+                <div class="p-6">
+                    <h3 class="text-2xl font-bold mb-2">Fresh Chicken</h3>
+                    <p class="text-gray-600 mb-4">Whole chicken, breast pieces, drumsticks, or wings—cut exactly to your liking.</p>
+                    <span class="text-red-600 font-bold text-lg">Available Daily</span>
+                </div>
+            </div>
+            <!-- Product 2 -->
+            <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition">
+                <img src="https://images.unsplash.com/photo-1602489114885-23a9317ec706?auto=format&fit=crop&q=80&w=600" alt="Mutton" class="h-56 w-full object-cover">
+                <div class="p-6">
+                    <h3 class="text-2xl font-bold mb-2">Premium Mutton</h3>
+                    <p class="text-gray-600 mb-4">Tender and high-quality local mutton, perfect for your family gatherings and feasts.</p>
+                    <span class="text-red-600 font-bold text-lg">Fresh Stock</span>
+                </div>
+            </div>
+            <!-- Product 3 -->
+            <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition">
+                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&q=80&w=600" alt="Special Cuts" class="h-56 w-full object-cover">
+                <div class="p-6">
+                    <h3 class="text-2xl font-bold mb-2">Custom Cuts & Fish</h3>
+                    <p class="text-gray-600 mb-4">Inquire about our seasonal fish options or custom-sized bone/boneless meat preferences.</p>
+                    <span class="text-red-600 font-bold text-lg">On Demand</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="bg-gray-100 py-20 px-4">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-6">About Karki Meat Shop</h2>
+            <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                Located in the heart of <strong>Tilottama-1, Rupandehi</strong>, Karki Meat Shop has been the neighborhood's trusted source for superior meat products. We understand how important nutrition and health are for your family, which is why we emphasize immaculate handling, precise cuts, and unmatched freshness.
+            </p>
+            <p class="text-lg text-gray-700 leading-relaxed">
+                Whether you are hosting a festive party or prepping regular weekly meals, we treat every order with the highest standard of care.
+            </p>
+        </div>
+    </section>
+
+    <!-- Contact & Location Section -->
+    <section id="contact" class="py-20 px-4 max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">Visit or Contact Us</h2>
+            <p class="text-gray-600">Place your order via phone call or drop by our retail store.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+            <!-- Contact details -->
+            <div class="space-y-6">
+                <div class="flex items-start space-x-4">
+                    <div class="bg-red-100 text-red-600 p-3 rounded-lg">
+                        <i class="fa-solid fa-location-dot text-xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-bold mb-1">Our Address</h4>
+                        <p class="text-gray-600">Tilottama-1, Rupandehi, Lumbini Province, Nepal</p>
+                    </div>
+                </div>
+
+                <div class="flex items-start space-x-4">
+                    <div class="bg-red-100 text-red-600 p-3 rounded-lg">
+                        <i class="fa-solid fa-phone text-xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-bold mb-1">Phone Number</h4>
+                        <p class="text-gray-600"><a href="tel:+9779800000000" class="hover:underline">+977 980-0000000</a></p>
+                    </div>
+                </div>
+
+                <div class="flex items-start space-x-4">
+                    <div class="bg-red-100 text-red-600 p-3 rounded-lg">
+                        <i class="fa-solid fa-clock text-xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-bold mb-1">Opening Hours</h4>
+                        <p class="text-gray-600">Monday - Sunday: 6:00 AM - 8:00 PM</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Map Placeholder / Image -->
+            <div class="bg-gray-200 rounded-xl overflow-hidden h-72 shadow-inner relative flex items-center justify-center">
+                <div class="text-center p-6">
+                    <i class="fa-solid fa-map-location-dot text-gray-400 text-5xl mb-3"></i>
+                    <p class="text-gray-700 font-semibold">Tilottama-1, Rupandehi, Nepal</p>
+                    <p class="text-sm text-gray-500 mt-1">Conveniently located near the main highway/market area.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-8 border-t border-gray-800 text-center">
+        <div class="max-w-6xl mx-auto px-4">
+            <p class="mb-2 text-white font-semibold">&copy; 2026 Karki Meat Shop. All Rights Reserved.</p>
+            <p class="text-sm text-gray-500 mb-4">Providing healthy food choices for a healthier community.</p>
+            <button onclick="openLoginModal()" class="text-xs text-gray-600 hover:text-gray-400 transition underline cursor-pointer">
+                <i class="fa-solid fa-lock text-[10px]"></i> Staff Control Portal
+            </button>
+        </div>
+    </footer>
+
+
+    <!-- ======================================================= -->
+    <!--  MANDATORY REGISTRATION / LOCK CHAT INTERFACE            -->
+    <!-- ======================================================= -->
+    <div class="fixed bottom-6 right-6 z-40 flex flex-col items-end">
+        <!-- Chat Container Box -->
+        <div id="customer-chat-window" class="w-80 sm:w-96 h-[460px] bg-white rounded-2xl shadow-2xl border border-gray-200 flex flex-col overflow-hidden mb-4 hidden">
+            <div class="bg-red-600 text-white p-4 flex justify-between items-center shadow-sm shrink-0">
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center text-sm"><i class="fa-solid fa-user"></i></div>
+                    <div>
+                        <h4 class="font-bold text-sm tracking-wide">Karki Meat Shop Chat</h4>
+                    </div>
+                </div>
+                <button onclick="toggleChatWidget()" class="text-white hover:text-red-200 text-lg cursor-pointer">&times;</button>
+            </div>
+            
+            <!-- VIEW A: Mandatory Details Screen (Blocks Chat Room) -->
+            <div id="customer-auth-screen" class="p-6 flex flex-col justify-center items-center flex-1 space-y-4 bg-gray-50">
+                <div class="text-center mb-2">
+                    <i class="fa-solid fa-user-shield text-red-600 text-4xl mb-2"></i>
+                    <h5 class="font-bold text-gray-800">Identify Yourself</h5>
+                    <p class="text-xs text-gray-500">Please provide your contact information to begin ordering.</p>
+                </div>
+                <div class="w-full space-y-3">
+                    <div>
+                        <label class="block text-[11px] font-bold text-gray-600 uppercase mb-1">Full Name</label>
+                        <input type="text" id="cust-reg-name" placeholder="e.g., Suresh Karki" class="w-full border p-2.5 rounded-lg text-sm bg-white outline-none focus:border-red-500">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-bold text-gray-600 uppercase mb-1">Phone Number</label>
+                        <input type="tel" id="cust-reg-phone" placeholder="e.g., 98XXXXXXXX" class="w-full border p-2.5 rounded-lg text-sm bg-white outline-none focus:border-red-500">
+                    </div>
+                    <div id="cust-reg-error" class="text-red-600 text-xs font-semibold text-center hidden">⚠️ Both Name and Phone are required!</div>
+                    <button onclick="submitCustomerRegistration()" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-2.5 rounded-lg text-sm transition shadow-md cursor-pointer">Unlocks Chat Room</button>
+                </div>
+            </div>
+
+            <!-- VIEW B: Real-Time Chat Room (Hidden behind verification screen) -->
+            <div id="customer-chat-screen" class="flex-1 flex flex-col min-h-0 hidden">
+                <div id="customer-chat-box" class="flex-1 p-4 overflow-y-auto space-y-3 bg-gray-50 text-sm"></div>
+                <form onsubmit="sendCustomerMessage(event)" class="p-3 bg-white border-t border-gray-100 flex gap-2 items-center shrink-0">
+                    <input type="text" id="customer-input" placeholder="Type items you want to buy..." required class="flex-1 bg-gray-100 p-2.5 rounded-xl text-xs sm:text-sm outline-none focus:bg-white border border-transparent focus:border-red-500">
+                    <button type="submit" class="bg-red-600 hover:bg-red-700 text-white w-9 h-9 rounded-xl flex items-center justify-center transition shrink-0 cursor-pointer">
+                        <i class="fa-solid fa-paper-plane text-xs"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Toggle Circular Button Icon -->
+        <button onclick="toggleChatWidget()" class="bg-red-600 hover:bg-red-700 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-xl transition-transform hover:scale-105 relative cursor-pointer">
+            <i class="fa-solid fa-comments text-xl"></i>
+        </button>
+    </div>
+
+
+    <!-- ======================================================= -->
+    <!--  HIDDEN BACK-END OWNER MANAGEMENT SYSTEM MODULE           -->
+    <!-- ======================================================= -->
+    <!-- Staff Verification Modal Gateway -->
     <div id="login-modal" class="fixed inset-0 bg-slate-900/80 z-50 flex items-center justify-center p-4 hidden">
         <div class="bg-white rounded-xl max-w-sm w-full p-6 shadow-2xl relative">
             <button onclick="closeLoginModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-xl font-bold cursor-pointer">&times;</button>
@@ -49,12 +256,13 @@
                     <label class="block text-xs font-bold text-gray-700 mb-1">Password</label>
                     <input type="password" id="login-password" required class="w-full border p-2.5 rounded-lg text-sm outline-none focus:border-red-500 bg-gray-50">
                 </div>
-                <div id="login-error" class="text-red-600 text-xs font-semibold hidden text-center">❌ Invalid username or password!</div>
+                <div id="login-error" class="text-red-600 text-xs font-semibold hidden text-center">❌ Invalid configuration entry!</div>
                 <button type="submit" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold p-2.5 rounded-lg transition text-sm cursor-pointer">Verify & Unlock</button>
             </form>
         </div>
     </div>
 
+    <!-- Admin Master Dashboard Control Board -->
     <div id="admin-panel" class="fixed inset-0 bg-slate-900/80 z-50 flex items-center justify-center p-4 hidden">
         <div class="bg-white rounded-xl max-w-5xl w-full h-[600px] flex flex-col overflow-hidden shadow-2xl">
             <div class="bg-slate-800 text-white p-4 flex justify-between items-center shrink-0">
@@ -66,87 +274,39 @@
             </div>
             
             <div class="flex flex-1 min-h-0 w-full overflow-hidden">
+                <!-- Sidebar Customer Contact Threads -->
                 <div class="w-1/3 border-r bg-slate-100 flex flex-col">
                     <div class="p-3 bg-slate-200 text-xs font-bold text-slate-600 tracking-wider uppercase border-b">Active Customer Contacts</div>
-                    <div id="admin-customer-list" class="flex-1 overflow-y-auto divide-y divide-gray-200">
-                        </div>
+                    <div id="admin-customer-list" class="flex-1 overflow-y-auto divide-y divide-gray-200"></div>
                 </div>
 
+                <!-- Chat Box Content Screen Thread -->
                 <div class="w-2/3 flex flex-col bg-white">
                     <div id="admin-chat-header" class="p-3 bg-gray-100 border-b text-sm font-bold text-gray-700 flex items-center gap-2">
                         <i class="fa-solid fa-user-clock text-gray-400"></i> Select a thread to reply
                     </div>
-                    
                     <div id="admin-chat-box" class="flex-1 p-4 overflow-y-auto space-y-3 bg-slate-50 text-sm"></div>
-
                     <form onsubmit="sendAdminReply(event)" class="p-4 border-t flex gap-2 bg-slate-100 shrink-0">
                         <input type="text" id="admin-input" placeholder="⬅️ Click on a customer to reply..." required disabled class="flex-1 border border-gray-300 bg-gray-200 p-3 rounded-xl outline-none text-sm font-medium focus:bg-white disabled:bg-gray-200 disabled:cursor-not-allowed">
-                        <button type="submit" id="admin-submit-btn" disabled class="bg-slate-800 hover:bg-slate-900 text-white px-6 rounded-xl font-bold text-sm transition shrink-0 disabled:bg-gray-400">
-                            Reply
-                        </button>
+                        <button type="submit" id="admin-submit-btn" disabled class="bg-slate-800 hover:bg-slate-900 text-white px-6 rounded-xl font-bold text-sm transition shrink-0 disabled:bg-gray-400">Reply</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="fixed bottom-6 right-6 z-40 flex flex-col items-end">
-        <div id="customer-chat-window" class="w-80 md:w-96 h-[450px] bg-white rounded-2xl shadow-2xl border border-gray-200 flex flex-col overflow-hidden mb-4 hidden">
-            <div class="bg-red-600 text-white p-4 flex justify-between items-center shadow-sm shrink-0">
-                <div class="flex items-center space-x-3">
-                    <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center text-sm"><i class="fa-solid fa-user"></i></div>
-                    <div>
-                        <h4 class="font-bold text-sm tracking-wide">Karki Meat Shop Chat</h4>
-                    </div>
-                </div>
-                <button onclick="toggleChatWidget()" class="text-white hover:text-red-200 text-lg cursor-pointer">&times;</button>
-            </div>
-            
-            <div id="customer-auth-screen" class="p-6 flex flex-col justify-center items-center flex-1 space-y-4 bg-gray-50">
-                <div class="text-center mb-2">
-                    <i class="fa-solid fa-address-book text-red-600 text-4xl mb-2"></i>
-                    <h5 class="font-bold text-gray-800">Provide Details to Chat</h5>
-                    <p class="text-xs text-gray-500">Please enter your info so we can fulfill your order delivery.</p>
-                </div>
-                <div class="w-full space-y-3">
-                    <div>
-                        <label class="block text-[11px] font-bold text-gray-600 uppercase mb-1">Your Full Name</label>
-                        <input type="text" id="cust-reg-name" placeholder="e.g. Ram Bahadur" class="w-full border p-2.5 rounded-lg text-sm bg-white outline-none focus:border-red-500">
-                    </div>
-                    <div>
-                        <label class="block text-[11px] font-bold text-gray-600 uppercase mb-1">Phone Number</label>
-                        <input type="tel" id="cust-reg-phone" placeholder="e.g. 98XXXXXXXX" class="w-full border p-2.5 rounded-lg text-sm bg-white outline-none focus:border-red-500">
-                    </div>
-                    <div id="cust-reg-error" class="text-red-600 text-xs font-semibold text-center hidden">⚠️ Both Name & Phone are required!</div>
-                    <button onclick="submitCustomerRegistration()" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-2.5 rounded-lg text-sm transition shadow">Start Chatting</button>
-                </div>
-            </div>
 
-            <div id="customer-chat-screen" class="flex-1 flex flex-col min-h-0 hidden">
-                <div id="customer-chat-box" class="flex-1 p-4 overflow-y-auto space-y-3 bg-gray-50 text-sm"></div>
-                <form onsubmit="sendCustomerMessage(event)" class="p-3 bg-white border-t border-gray-100 flex gap-2 items-center shrink-0">
-                    <input type="text" id="customer-input" placeholder="Type items you want to buy..." required class="flex-1 bg-gray-100 p-2.5 rounded-xl text-xs md:text-sm outline-none focus:bg-white border border-transparent focus:border-red-500">
-                    <button type="submit" class="bg-red-600 hover:bg-red-700 text-white w-9 h-9 rounded-xl flex items-center justify-center transition shrink-0 cursor-pointer">
-                        <i class="fa-solid fa-paper-plane text-xs"></i>
-                    </button>
-                </form>
-            </div>
-        </div>
-        
-        <button onclick="toggleChatWidget()" class="bg-red-600 hover:bg-red-700 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-xl transition-transform hover:scale-105 relative cursor-pointer">
-            <i class="fa-solid fa-comments text-xl"></i>
-        </button>
-    </div>
-
+    <!-- ======================================================= -->
+    <!--  SYSTEM CORE LOGIC SCRIPTS                              -->
+    <!-- ======================================================= -->
     <script>
         let adminIsOnline = false;
         let selectedCustomerId = null; 
 
-        // Read stored user login configuration
         let savedClientInfo = localStorage.getItem('karki_verified_client');
         let clientProfile = savedClientInfo ? JSON.parse(savedClientInfo) : null;
 
-        const defaultGreeting = { text: "Namaste! Welcome to Karki Meat Shop.", sender: 'system' };
+        const defaultGreeting = { text: "Namaste! Welcome to Karki Meat Shop. Please tell us your meat requirements and delivery address inside Tilottama.", sender: 'system' };
 
         function getMasterData() {
             let data = localStorage.getItem('karki_master_chat_records');
@@ -190,7 +350,6 @@
             setupChatWindowViews();
         }
 
-        /* Verification Controller Setup */
         function setupChatWindowViews() {
             const authScreen = document.getElementById('customer-auth-screen');
             const chatScreen = document.getElementById('customer-chat-screen');
@@ -216,11 +375,9 @@
             }
 
             err.classList.add('hidden');
-            // Format ID key neatly stringifying both identity fields 
             clientProfile = { name: name, phone: phone, keyId: `${name} (${phone})` };
             localStorage.setItem('karki_verified_client', JSON.stringify(clientProfile));
 
-            // Setup default channel thread inside master data immediately 
             let master = getMasterData();
             if (!master[clientProfile.keyId]) {
                 master[clientProfile.keyId] = [defaultGreeting];
